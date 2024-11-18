@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+env:
+  FOLDER: DeterAPI2
+  SCRIPTS: script1.sh script2.sh script3.sh
+
   
 jobs:  
   job1-api:
@@ -85,7 +89,7 @@ jobs:
             echo "No script found in ${{ matrix.folder }}"
           fi
 
-  job3-api:
+  job3-api1:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -105,3 +109,23 @@ jobs:
           else
             echo "No script found in ${{ matrix.folder }}"
           fi
+
+  job3-api:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Scripts
+        run: |
+          echo "Processing folder: $FOLDER"
+          for script in $SCRIPTS; do
+            script_path="$FOLDER/$script"
+            if [ -f "$script_path" ]; then
+              bash "$script_path"
+            else
+              echo "No script found at $script_path"
+            fi
+          done
+      
