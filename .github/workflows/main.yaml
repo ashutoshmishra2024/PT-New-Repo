@@ -1,1 +1,66 @@
+name: Run Jmeter Tests from Config File
+on:
+  push:
+    branches:
+      - main
+  
+jobs:  
+  job1-api:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+          folder: [DeterAPI1]
+    
+    steps:
+      # checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
+      - name: Run Script
+        run: |
+          echo "Processing folder: ${{ matrix.folder }}"
+          if [ -f "./scripts/${{ matrix.folder }}/script.sh" ]; then
+            bash "./scripts/${{ matrix.folder }}/script.sh"
+          else
+            echo "No script found in ${{ matrix.folder }}"
+          fi
+
+  job2-ui:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        folder: [DeterUI2]
+    
+    steps:
+      # checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Script
+        run: |
+          echo "Processing folder: ${{ matrix.folder }}"
+          if [ -f "./scripts/${{ matrix.folder }}/script.sh" ]; then
+            bash "./scripts/${{ matrix.folder }}/script.sh"
+          else
+            echo "No script found in ${{ matrix.folder }}"
+          fi
+
+  job3-api:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder: [DeterAPI2]
+    
+    steps:
+      # checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Script
+        run: |
+          echo "Processing folder: ${{ matrix.folder }}"
+          if [ -f "./scripts/${{ matrix.folder }}/script.sh" ]; then
+            bash "./scripts/${{ matrix.folder }}/script.sh"
+          else
+            echo "No script found in ${{ matrix.folder }}"
+          fi
