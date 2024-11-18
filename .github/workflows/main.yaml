@@ -4,18 +4,37 @@ on:
     branches:
       - main
 env:
-  FOLDER: DeterAPI2
+  FOLDER: DeterAPI2,DeterAPI1
   SCRIPTS: script1.sh script2.sh script3.sh
 
   
 jobs:  
   job1-api:
     runs-on: ubuntu-latest
-    
     steps:
-      # checkout repository
+      # Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Run Scripts
+        run: |
+          echo "Processing folder: $FOLDER"
+          for script in $SCRIPTS; do
+            script_path="$FOLDER/$script"
+            if [ -f "$script_path" ]; then
+              bash "$script_path"
+            else
+              echo "No script found at $script_path"
+            fi
+          done
+      
+  #job1-api:
+   # runs-on: ubuntu-latest
+    
+    #steps:
+      # checkout repository
+     # - name: Checkout repository
+      #  uses: actions/checkout@v2
 
       #- name: Read and process lines from text file
        # run: |
@@ -58,15 +77,15 @@ jobs:
          # aws-region: us-east-1
 
 
-      - name: Run Script
-        run: |
-          echo "Processing folder: ${{ matrix.folder }}"
-           if [ -f "${{ matrix.folder }}/scripts.sh" ]; then
-            #bash "${{ matrix.folder }}/script1.sh"
-            #bash "${{ matrix.folder }}/script2.sh"
-            bash "${{ matrix.folder }}/scripts.sh"
-             echo "No script found in ${{ matrix.folder }}"
-          fi
+      #- name: Run Script
+       # run: |
+        #  echo "Processing folder: ${{ matrix.folder }}"
+         #  if [ -f "${{ matrix.folder }}/scripts.sh" ]; then
+          #  #bash "${{ matrix.folder }}/script1.sh"
+           # #bash "${{ matrix.folder }}/script2.sh"
+            #bash "${{ matrix.folder }}/scripts.sh"
+             #echo "No script found in ${{ matrix.folder }}"
+          #fi
 
   job2-ui:
     runs-on: ubuntu-latest
