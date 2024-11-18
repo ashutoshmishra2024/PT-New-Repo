@@ -27,47 +27,6 @@ jobs:
               echo "No script found at $script_path"
             fi
           done
-      
-  #job1-api:
-   # runs-on: ubuntu-latest
-    
-    #steps:
-      # checkout repository
-     # - name: Checkout repository
-      #  uses: actions/checkout@v2
-
-      #- name: Read and process lines from text file
-       # run: |
-        #  while IFS= read -r line || [ -n "$line" ]; do
-         #   
-          #  # Further split the folder and scripts
-           # IFS='-' read -r folder scripts <<< "$folder_script"
-            #
-            # Split the scripts into an array
-            #IFS=',' read -r -a script_array <<< "$scripts"
-            #
-            #
-            # Navigate to the folder and run each script
-            #if [ -d "$folder" ]; then
-             # cd "$folder"
-              #for script in "${script_array[@]}"; do
-               # if [ -f "$script" ]; then
-                #  echo "Running script: $script"
-                 # bash "$script"
-                #else
-                 # echo "Script not found: $script"
-                #fi
-              #done
-              #cd -
-            #else
-             # echo "Folder not found: $folder"
-            #fi
-          #done < text.txt
-
-     # - name: Read and process lines from text file
-     #   run: |
-      #    while IFS= read -r line || [ -n "$line" ]; do
-      #      # Split the line into components
 
      # - name: Set up AWS CLI
       #  uses: aws-actions/configure-aws-credentials@v1
