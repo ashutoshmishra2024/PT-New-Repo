@@ -19,7 +19,7 @@ jobs:
       - name: Run Script
         run: |
           echo "Processing folder: ${{ matrix.folder }}"
-          if [ -f "${{ matrix.folder }}/script1.sh" ]; then
+          if [ -f "${{ matrix.folder }}/script.sh" ]; then
             bash "${{ matrix.folder }}/script1.sh"
             bash "${{ matrix.folder }}/script2.sh"
           else
@@ -27,7 +27,7 @@ jobs:
           fi
 
   job2-ui:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         folder: [DeterUI2]
