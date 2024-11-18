@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        folder: [DeterUI2]
+        folder: [DeterUI]
     
     steps:
       # checkout repository
