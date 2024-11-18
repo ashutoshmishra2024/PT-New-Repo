@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
           folder: [DeterAPI1]
-          scripts: [script1.sh,script2.sh]
+          scripts: [script1.sh]
     steps:
       # checkout repository
       - name: Checkout repository
