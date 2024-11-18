@@ -20,8 +20,9 @@ jobs:
       - name: Run Script
         run: |
           echo "Processing folder: ${{ matrix.folder }}"
-          if [ -f "${{ matrix.folder }}/script1.sh,script2.sh" ]; then
-            bash "${{ matrix.folder }}/script1.sh,script2.sh"
+          if [ -f "${{ matrix.folder }}/script1.sh" ]; then
+            bash "${{ matrix.folder }}/script1.sh"
+            bash "${{ matrix.folder }}/script2.sh"
           else
             echo "No script found in ${{ matrix.folder }}"
           fi
