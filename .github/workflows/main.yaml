@@ -7,10 +7,7 @@ on:
 jobs:  
   job1-api:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-          folder: [DeterAPI1]
-          scripts: [script1.sh,script2]
+    
     steps:
       # checkout repository
       - name: Checkout repository
