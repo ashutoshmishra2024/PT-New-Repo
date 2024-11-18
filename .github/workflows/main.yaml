@@ -72,6 +72,7 @@ jobs:
     strategy:
       matrix:
         folder: [DeterUI]
+        scripts: [script1.sh,script2.sh]
     
     steps:
       # checkout repository
@@ -81,9 +82,8 @@ jobs:
       - name: Run Script
         run: |
           echo "Processing folder: ${{ matrix.folder }}"
-          if [ -f "${{ matrix.folder }}/script1.sh" ]; then
-            bash "${{ matrix.folder }}/script1.sh"
-            bash "${{ matrix.folder }}/script2.sh"
+          if [ -f "${{ matrix.folder }}/scripts.sh" ]; then
+            bash "${{ matrix.folder }}/scripts.sh"
           else
             echo "No script found in ${{ matrix.folder }}"
           fi
@@ -93,6 +93,7 @@ jobs:
     strategy:
       matrix:
         folder: [DeterAPI2]
+        scripts: [script1.sh,script2.sh,script3.sh]
     
     steps:
       # checkout repository
@@ -102,10 +103,8 @@ jobs:
       - name: Run Script
         run: |
           echo "Processing folder: ${{ matrix.folder }}"
-          if [ -f "${{ matrix.folder }}/script1.sh" ]; then
-            bash "${{ matrix.folder }}/script1.sh"
-            bash "${{ matrix.folder }}/script2.sh"
-            bash "${{ matrix.folder }}/script3.sh"
+          if [ -f "${{ matrix.folder }}/scripts.sh" ]; then
+            bash "${{ matrix.folder }}/scripts.sh"
           else
             echo "No script found in ${{ matrix.folder }}"
           fi
